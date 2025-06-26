@@ -3,6 +3,12 @@ function grandiloquenciaParaJS(codigoGrandiloquente) {
         // Declaração de variáveis
         .replace(/DEFINIR DE MANEIRA EXPLÍCITA E IRREVOGÁVEL A VARIÁVEL DE NOME\s+\[(.*?)\]\s+COM O VALOR\s+\[(.*?)\]/g, 'let $1 = $2;')
 
+        // Atribuição
+        .replace(
+            /REDEFINA, COM O PODER QUE ME CONFERE A LÓGICA, O VALOR DE \[(.*?)\] PARA \[(.*?)\]/g,
+            '$1 = $2;'
+        )
+
         // Condicionais
         .replace(/NO CASO EM QUE A CONDIÇÃO\s+\[(.*?)\]\s+SE MOSTRAR VERDADEIRA, EXECUTAR O SEGUINTE BLOCO:/g, 'if ($1):')
         .replace(/CASO CONTRÁRIO, SE A CONDIÇÃO\s+\[(.*?)\]\s+FOR VERDADEIRA, PROCEDER COM:/g, 'else if ($1):')
@@ -12,6 +18,12 @@ function grandiloquenciaParaJS(codigoGrandiloquente) {
         .replace(
             /PARA CADA ITERAÇÃO NUMERADA DE\s+\[(.*?)\]\s+ATÉ\s+\[(.*?)\],\s+INCREMENTANDO DE\s+\[(.*?)\]\s+EM\s+\[(.*?)\],\s+PROCEDER COM:/g,
             'for (let i = $1; i <= $2; i += $4):'
+        )
+
+        // While loop
+        .replace(
+            /PERSEVERE NA AÇÃO ENQUANTO A CONDIÇÃO \[(.*?)\] FOR VERDADEIRA, PROSSIGA COM:/g,
+            'while ($1):'
         )
 
         // Definição de função
