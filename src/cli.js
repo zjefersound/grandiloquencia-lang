@@ -16,5 +16,8 @@ if (outputFile) {
   fs.writeFileSync(outputFile, jsCode);
   console.log(`Arquivo ${outputFile} gerado com sucesso!`);
 } else {
+  console.log('___________________________________');
   console.log(jsCode);
+  console.log('___________________________________');
+  eval(jsCode);
 }
