@@ -49,6 +49,23 @@ function grandiloquenciaParaJS(codigoGrandiloquente) {
             '$2["$1"]'
         )
 
+        .replace(
+            /RECONHEÇO A CONSTITUIÇÃO DO OBJETO \[(.*?)\], COM OS ATRIBUTOS \{(.*?)\}/g,
+            'let $1 = {$2};'
+        )
+
+        // Acesso a propriedade do objeto
+        .replace(
+            /CONSULTE O VALOR DO ATRIBUTO \["(.*?)"\] PRESENTE EM \[(.*?)\]/g,
+            '$2["$1"]'
+        )
+
+        // Atribuição a propriedade do objeto
+        .replace(
+            /ESTABELEÇO QUE O ATRIBUTO \["(.*?)"\] DE \[(.*?)\] DEVE TER O VALOR \[(.*?)\]/g,
+            '$2["$1"] = $3;'
+        )
+
         .replace(/IMPRIMIR NA SAÍDA PADRÃO O SEGUINTE TEXTO:\s+\[(.*)\]/g, (match, inner) => {
             return `console.log(${inner});`;
         })
