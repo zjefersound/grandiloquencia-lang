@@ -8,9 +8,6 @@ function grandiloquenciaParaJS(codigoGrandiloquente) {
         .replace(/CASO CONTRÁRIO, SE A CONDIÇÃO\s+\[(.*?)\]\s+FOR VERDADEIRA, PROCEDER COM:/g, 'else if ($1):')
         .replace(/CASO CONTRÁRIO, PROCEDER COM:/g, 'else:')
 
-        // Impressão
-        .replace(/IMPRIMIR NA SAÍDA PADRÃO O SEGUINTE TEXTO:\s+\[(.*?)\]/g, 'console.log($1);')
-
         // Laço tipo for
         .replace(
             /PARA CADA ITERAÇÃO NUMERADA DE\s+\[(.*?)\]\s+ATÉ\s+\[(.*?)\],\s+INCREMENTANDO DE\s+\[(.*?)\]\s+EM\s+\[(.*?)\],\s+PROCEDER COM:/g,
@@ -27,6 +24,35 @@ function grandiloquenciaParaJS(codigoGrandiloquente) {
             /CLAMO PELO PODER DA FUNÇÃO \[(.*?)\],\s*SUPLICANDO SUA EXECUÇÃO COM OS VALORES \[(.*?)\]/g,
             '$1($2);'
         )
+
+        // Criação do array
+        .replace(
+            /PROMULGO A FORMAÇÃO DA LISTA DENOMINADA \[(.*?)\], COM OS ELEMENTOS \[(.*?)\]/g,
+            'let $1 = [$2];'
+        )
+
+        // Atribuição a elemento do array
+        .replace(
+            /DETERMINO QUE O ELEMENTO DE ORDEM \[(.*?)\] EM \[(.*?)\] RECEBA O VALOR \[(.*?)\]/g,
+            '$2[$1] = $3;'
+        )
+
+        // 1. Acesso a elemento de array
+        .replace(
+            /REQUISITE O ELEMENTO DE ORDEM \[(.*?)\] PRESENTE EM \[(.*?)\]/g,
+            '$2[$1]'
+        )
+
+        // 2. Acesso a propriedade de objeto
+        .replace(
+            /CONSULTE O VALOR DO ATRIBUTO \["(.*?)"\] PRESENTE EM \[(.*?)\]/g,
+            '$2["$1"]'
+        )
+
+        .replace(/IMPRIMIR NA SAÍDA PADRÃO O SEGUINTE TEXTO:\s+\[(.*)\]/g, (match, inner) => {
+            return `console.log(${inner});`;
+        })
+
 
         .split('\n');
 
