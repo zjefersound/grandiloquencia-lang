@@ -31,7 +31,7 @@ CLAMO PELO PODER DA FUNÇÃO [resolvaBhaskara], SUPLICANDO SUA EXECUÇÃO COM OS
 
 ## 📂 Seção de Documentação
 
-Para leitura aprofundada sobre os comandos, estruturas sintáticas e orientações de uso da linguagem, consulte o compêndio oficial em [Docs.md](./grandiloquencia-handbook.md).
+Para leitura aprofundada sobre os comandos, estruturas sintáticas e orientações de uso da linguagem, consulte o compêndio oficial em [grandiloquencia-handbook.md](./grandiloquencia-handbook.md).
 
 ---
 
