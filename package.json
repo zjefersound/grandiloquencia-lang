@@ -8,9 +8,9 @@
   },
   "scripts": {
     "test": "jest",
-    "cli:run": "node cli.js run",
-    "cli:transpile": "node cli.js transpile",
-    "cli:show": "node cli.js show"
+    "cli:run": "node ./src/cli.js run",
+    "cli:transpile": "node ./src/cli.js transpile",
+    "cli:show": "node ./src/cli.js show"
   },
   "repository": {
     "type": "git",
