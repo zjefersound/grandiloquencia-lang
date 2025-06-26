@@ -4,4 +4,3 @@ NO CASO EM QUE A CONDIÇÃO [idade >= 18] SE MOSTRAR VERDADEIRA, EXECUTAR O SEGU
     IMPRIMIR NA SAÍDA PADRÃO O SEGUINTE TEXTO: ["Você está qualificado para consumir cafeína."]
 CASO CONTRÁRIO, PROCEDER COM:
     IMPRIMIR NA SAÍDA PADRÃO O SEGUINTE TEXTO: ["Retorne quando atingir a maioridade civil."]
-FIM DO BLOCO

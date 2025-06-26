@@ -5,6 +5,10 @@ function grandiloquenciaParaJS(codigoGrandiloquente) {
         .replace(/CASO CONTRÁRIO, SE A CONDIÇÃO\s+\[(.*?)\]\s+FOR VERDADEIRA, PROCEDER COM:/g, 'else if ($1):')
         .replace(/CASO CONTRÁRIO, PROCEDER COM:/g, 'else:')
         .replace(/IMPRIMIR NA SAÍDA PADRÃO O SEGUINTE TEXTO:\s+\[(.*?)\]/g, 'console.log($1);')
+        .replace(
+            /PARA CADA ITERAÇÃO NUMERADA DE\s+\[(.*?)\]\s+ATÉ\s+\[(.*?)\],\s+INCREMENTANDO DE\s+\[(.*?)\]\s+EM\s+\[(.*?)\],\s+PROCEDER COM:/g,
+            'for (let i = $1; i <= $2; i += $4):'
+        )
         .split('\n');
 
     const transpiled = [];
@@ -17,24 +21,20 @@ function grandiloquenciaParaJS(codigoGrandiloquente) {
 
         if (!trimmed) continue;
 
-        // Fecha blocos se a indentação diminuiu
         while (indent < indentStack[indentStack.length - 1]) {
             indentStack.pop();
             transpiled.push('    '.repeat(indentStack.length - 1) + '}');
         }
 
         if (trimmed.endsWith(':')) {
-            // Remove ":" e abre bloco
             const declaracao = trimmed.slice(0, -1);
             transpiled.push('    '.repeat(indentStack.length - 1) + declaracao + ' {');
             indentStack.push(indent + 1);
         } else {
-            // Linha comum
             transpiled.push('    '.repeat(indentStack.length - 1) + trimmed);
         }
     }
 
-    // Fecha blocos restantes
     while (indentStack.length > 1) {
         indentStack.pop();
         transpiled.push('    '.repeat(indentStack.length - 1) + '}');
